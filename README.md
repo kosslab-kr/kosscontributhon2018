@@ -41,7 +41,7 @@ Contributhon?
 
 프로젝트4. CUBRID DBMS를 적용한 CMS(Content Management System) (멘토 김병욱)
   - [활동 내용](https://....................................................)
-  - [Repository](https://....................................................)
+  - [Repository](https://github.com/cubrid-cms)
 
 프로젝트5. GitShare (멘토 김동우, 장기영)
   - [활동 내용](https://....................................................)
