@@ -45,7 +45,7 @@ Contributhon?
 
 프로젝트5. GitShare (멘토 김동우, 장기영)
   - [활동 내용](https://....................................................)
-  - [Repository](https://....................................................)
+  - [Repository](https://github.com/jsdevkr/gitCodeShare.com)
 
 프로젝트6. Guider (멘토 이평화)
   - [활동 내용](https://....................................................)
@@ -65,7 +65,7 @@ Contributhon?
 
 프로젝트10. Presto Music (멘토 소현섭)
   - [활동 내용](https://....................................................)
-  - [Repository](https://....................................................)
+  - [Repository](https://github.com/kosslab-kr/Presto.Contributhon)
 
 프로젝트11. Tizen C#/Xamarin Sample App 개발 (멘토 손기성)
   - [활동 내용](https://....................................................)
