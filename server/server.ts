@@ -72,7 +72,7 @@ if (process.env.NODE_ENV === 'production') {
   // Day of Week: 0-6
 
   // cronjob set
-  const CloudCode = require('./src/CloudCode');
+  const CloudCode = require('./CloudCode');
   const crond = new CloudCode(Parse, 'Asia/Seoul');
 
   // backgroundJob
