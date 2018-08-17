@@ -3,7 +3,6 @@ if (process.env.NODE_ENV !== 'production') {
   dotenv.config();
 }
 
-// parse server
 import express from 'express';
 import path from 'path';
 
