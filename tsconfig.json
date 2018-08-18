@@ -7,7 +7,7 @@
     "allowJs": true,
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "noUnusedParameters": false,
     "removeComments": false,
     "preserveConstEnums": true,
