@@ -1,0 +1,103 @@
+{
+  "project": [
+    {
+      "projectId": "ankus",
+      "projectName": "ankus - Lite for web data analysis",
+      "mentor": [{"name": "", "profileUrl": ""}],
+      "Repository": []
+    },
+    {
+      "projectId": "chromium",
+      "projectName": "Chromium / Blink",
+      "mentor": [{"name": "", "profileUrl": ""}],
+      "Repository": []
+    },
+    {
+      "projectId": "keras",
+      "projectName": "Contiribute to Keras(+Tensorflow) Documentation",
+      "mentor": [{"name": "", "profileUrl": ""}],
+      "Repository": []
+    },
+    {
+      "projectId": "cubrid",
+      "projectName": "CUBRID DBMS를 적용한 CMS(Content Management System)",
+      "mentor": [{"name": "", "profileUrl": ""}],
+      "Repository": ["https://github.com/cubrid-cms"]
+    },
+    {
+      "projectId": "gitshare",
+      "projectName": "GitShare(gitCodeShare.com)",
+      "mentor": [
+        {"name": "김동우", "profileUrl": "https://github.com/gimdongwoo"},
+        {"name": "장기영", "profileUrl": "https://github.com/thomasJang"}
+      ],
+      "Repository": ["https://github.com/kosslab-kr/gitCodeShare.com"]
+    },
+    {
+      "projectId": "guider",
+      "projectName": "Guider",
+      "mentor": [{"name": "", "profileUrl": ""}],
+      "Repository": ["https://github.com/iipeace/guider"]
+    },
+    {
+      "projectId": "it_chain",
+      "projectName": "it-chain",
+      "mentor": [{"name": "", "profileUrl": ""}],
+      "Repository": ["https://github.com/it-chain/engine"]
+    },
+    {
+      "projectId": "netfilter",
+      "projectName": "Netfilter",
+      "mentor": [{"name": "", "profileUrl": ""}],
+      "Repository": []
+    },
+    {
+      "projectId": "openstack",
+      "projectName": "OpenStack",
+      "mentor": [{"name": "", "profileUrl": ""}],
+      "Repository": []
+    },
+    {
+      "projectId": "presto_music",
+      "projectName": "Presto Music",
+      "mentor": [{"name": "", "profileUrl": ""}],
+      "Repository": ["https://github.com/kosslab-kr/Presto.Contributhon"]
+    },
+    {
+      "projectId": "tizen_xamarin",
+      "projectName": "Tizen C#/Xamarin Sample App 개발",
+      "mentor": [{"name": "", "profileUrl": ""}],
+      "Repository": []
+    },
+    {
+      "projectId": "tizen_nnapi",
+      "projectName": "Tizen NN API & Runtime",
+      "mentor": [{"name": "", "profileUrl": ""}],
+      "Repository": []
+    },
+    {
+      "projectId": "uftrace",
+      "projectName": "uftrace",
+      "mentor": [{"name": "", "profileUrl": ""}],
+      "Repository": []
+    },
+    {
+      "projectId": "webos",
+      "projectName": "webOS Open Source Edition",
+      "mentor": [{"name": "", "profileUrl": ""}],
+      "Repository": []
+    },
+    {
+      "projectId": "goorm",
+      "projectName": "구름입력기",
+      "mentor": [{"name": "", "profileUrl": ""}],
+      "Repository": ["https://github.com/gureum/gureum/"]
+    },
+    {
+      "projectId": "kaggle_kernel_ko",
+      "projectName": "캐글 속 커널 한글화 작업을 통한 데이터 사이언스 대중화",
+      "mentor": [{"name": "", "profileUrl": ""}],
+      "Repository": ["https://github.com/kosslab-kr/Kaggle_KR"]
+    }
+  ]
+}
