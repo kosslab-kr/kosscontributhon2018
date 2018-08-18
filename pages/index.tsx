@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Layout, Button, Menu, Icon, Card, Row, Col } from 'antd';
+import { Layout, Button, Menu, Icon, Card, Row, Col, Timeline, Divider } from 'antd';
 import styled from 'styled-components';
 
 import '../assets/styles/globals';
@@ -32,8 +32,10 @@ const StyledLayoutSider = styled(Layout.Sider)`
   background: #fff;
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
   padding: 20px;
+  overflow: auto;
+  height: 100vh;
   h2 {
-    color: #3e8adb;
+    color: #3576bb;
     text-align: center;
     font-size: 24px;
   }
@@ -54,6 +56,11 @@ class App extends React.Component<IProps> {
                     <Project>
                       <h3>{n.projectName}</h3>
                       <p>{n.Repository}</p>
+
+                      <div>
+                        <Icon type="upload" /> 10 &nbsp;
+                        <Icon type="exclamation-circle-o" /> 10
+                      </div>
                     </Project>
                   </PaddedCol>
                 );
@@ -62,7 +69,39 @@ class App extends React.Component<IProps> {
           </StyledLayoutContent>
         </Layout>
         <StyledLayoutSider width={400}>
-          <h2>2018 공개 SW 컨트리뷰톤</h2>
+          <h2>2018 OSS Contributon</h2>
+          <Divider />
+          <p>
+            <b>Recently Events</b>
+          </p>
+          <div>
+            <Timeline>
+              <Timeline.Item dot={<Icon type="upload" />}>Create a services site 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="message" />}>Solve initial network problems 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="exclamation-circle-o" />}>Technical testing 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="upload" />}>Network problems being solved 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="upload" />}>Create a services site 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="message" />}>Solve initial network problems 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="exclamation-circle-o" />}>Technical testing 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="upload" />}>Network problems being solved 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="star" />}>Create a services site 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="message" />}>Solve initial network problems 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="exclamation-circle-o" />}>Technical testing 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="upload" />}>Network problems being solved 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="upload" />}>Create a services site 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="message" />}>Solve initial network problems 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="exclamation-circle-o" />}>Technical testing 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="upload" />}>Network problems being solved 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="upload" />}>Create a services site 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="message" />}>Solve initial network problems 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="exclamation-circle-o" />}>Technical testing 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="upload" />}>Network problems being solved 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="upload" />}>Create a services site 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="message" />}>Solve initial network problems 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="exclamation-circle-o" />}>Technical testing 2015-09-01</Timeline.Item>
+              <Timeline.Item dot={<Icon type="upload" />}>Network problems being solved 2015-09-01</Timeline.Item>
+            </Timeline>
+          </div>
         </StyledLayoutSider>
       </Layout>
     );
