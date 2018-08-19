@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build && node server.js",
+    "start": "node server.js",
     "dev": "node server.js",
     "build": "next build",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "postinstall": "npm run build"
   },
   "repository": {
     "type": "git",
