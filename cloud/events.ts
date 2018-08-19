@@ -80,7 +80,7 @@ async function saveEvent(project: TProject, event: any) {
   // save
   eventM = new Parse.Object('Event');
   await eventM.save({
-    proejctId: project.projectId,
+    projectId: project.projectId,
     eventId,
     ...event,
   });

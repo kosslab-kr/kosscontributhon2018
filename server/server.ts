@@ -24,9 +24,9 @@ const PARSE_APP = PARSE_CONFIG.apps[0];
 if (!PARSE_APP.databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
 }
-const PARSE_SERVERURL = process.env.PORT
+const PARSE_LOCALURL = process.env.PORT
   ? `http://localhost:${process.env.PORT}/parse`
-  : PARSE_APP.serverURL || PARSE_APP.localServerURL || 'http://localhost:1337/parse';
+  : PARSE_APP.localServerURL || 'http://localhost:1337/parse';
 
 // next
 const port = parseInt(process.env.PORT, 10) || 1337;
@@ -61,7 +61,7 @@ app.prepare().then(() => {
     appId: PARSE_APP.appId || 'myAppId',
     masterKey: PARSE_APP.masterKey || '', // Add your master key here. Keep it secret!
     fileKey: PARSE_APP.fileKey || '', // Add the file key to provide access to files already hosted on Parse
-    serverURL: PARSE_SERVERURL, // Don't forget to change to https if needed
+    serverURL: PARSE_LOCALURL, // Don't forget to change to https if needed
     // liveQuery: {
     //   classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
     // },
@@ -113,7 +113,7 @@ function addHandler(server: express.Express) {
   // Parse for node client
   const Parse = require('parse/node').Parse;
   Parse.initialize(PARSE_APP.appId || 'myAppId', null, PARSE_APP.masterKey || '');
-  Parse.serverURL = PARSE_SERVERURL;
+  Parse.serverURL = PARSE_LOCALURL;
 
   // hanlder
   server.get('/api/events', ParseWrap(Parse, eventsHandler.getEvents));

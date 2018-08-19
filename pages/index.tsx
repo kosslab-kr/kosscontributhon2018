@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Layout, Button, Menu, Icon, Card, Row, Col, Timeline, Divider, Tag, Badge } from 'antd';
 import { RadialBarChart, RadialBar, Legend, Tooltip } from 'recharts';
+import 'isomorphic-unfetch';
 
 import '../assets/styles/globals';
 import { StyledLayoutContent, PaddedCol, StyledLayoutSider } from '../styledComponent';
@@ -17,9 +18,36 @@ type TProject = {
   Repository: string[];
 };
 
+type TEvent = {
+  projectId: string;
+  eventId: string;
+  [k: string]: any;
+};
+
 interface IProps {}
 
-class App extends React.Component<IProps> {
+interface IState {
+  events: TEvent[];
+}
+
+async function getEvents() {
+  const res = await fetch('https://contributhon.herokuapp.com/api/events');
+  const json = await res.json();
+  return json;
+}
+
+async function getProjects() {
+  const res = await fetch('https://contributhon.herokuapp.com/api/projects');
+  const json = await res.json();
+  return json;
+}
+
+class App extends React.Component<IProps, IState> {
+  static async getInitialProps() {
+    const data = await Promise.all([getProjects(), getEvents()]);
+    return { projects: data[0], events: data[1] };
+  }
+
   render() {
     return (
       <Layout>
