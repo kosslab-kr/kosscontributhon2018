@@ -31,13 +31,13 @@ interface IState {
 }
 
 async function getEvents() {
-  const res = await fetch('https://contributhon.herokuapp.com/api/events');
+  const res = await fetch(`${process.env.BACKEND_URL}/api/events`);
   const json = await res.json();
   return json;
 }
 
 async function getProjects() {
-  const res = await fetch('https://contributhon.herokuapp.com/api/projects');
+  const res = await fetch(`${process.env.BACKEND_URL}/api/projects`);
   const json = await res.json();
   return json;
 }
