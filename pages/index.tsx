@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Layout, Button, Menu, Icon, Card, Row, Col, Timeline, Divider, Tag, Badge } from 'antd';
-import { RadialBarChart, RadialBar, Legend, Tooltip } from 'recharts';
 import 'isomorphic-unfetch';
-
 import '../assets/styles/globals';
+
+import { RadialBarChart, RadialBar, Legend, Tooltip } from 'recharts';
+import { Layout, Button, Menu, Icon, Card, Row, Col, Timeline, Divider, Tag, Badge } from 'antd';
 import { StyledLayoutContent, PaddedCol, StyledLayoutSider } from '../styledComponent';
 import { ProjectCard } from '../component';
 import contributonProjectJson from '../contributon-project.json';

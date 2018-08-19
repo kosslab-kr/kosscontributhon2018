@@ -1,4 +1,5 @@
 const withPlugins = require('next-compose-plugins');
+const withCSS = require('@zeit/next-css');
 const withLess = require('@zeit/next-less');
 const withSass = require('@zeit/next-sass');
 const withTypescript = require('@zeit/next-typescript');
@@ -16,12 +17,22 @@ module.exports = withPlugins([
       },
     },
   ],
-  [withSass],
   [
     withLess,
     {
       lessLoaderOptions: {
         javascriptEnabled: true,
+      },
+    },
+  ],
+  [withSass],
+  [
+    withCSS,
+    {
+      cssModules: true,
+      cssLoaderOptions: {
+        importLoaders: 1,
+        localIdentName: '[local]___[hash:base64:5]',
       },
     },
   ],

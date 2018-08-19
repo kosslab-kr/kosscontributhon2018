@@ -1,7 +1,5 @@
 import dotenv from 'dotenv';
-if (process.env.NODE_ENV !== 'production') {
-  dotenv.config();
-}
+dotenv.config();
 
 import express from 'express';
 import next from 'next';
@@ -12,7 +10,6 @@ import path from 'path';
 // handler
 import eventsHandler from './handler/events';
 import projectHandler from './handler/project';
-import { ADDRCONFIG } from 'dns';
 
 const ParseServer = require('parse-server').ParseServer;
 const S3Adapter = require('parse-server').S3Adapter;
