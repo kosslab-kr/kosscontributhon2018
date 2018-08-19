@@ -9,6 +9,11 @@ import morgan from 'morgan';
 // import bodyParser from 'body-parser';
 import path from 'path';
 
+// handler
+import eventsHandler from './handler/events';
+import projectHandler from './handler/project';
+import { ADDRCONFIG } from 'dns';
+
 const ParseServer = require('parse-server').ParseServer;
 const S3Adapter = require('parse-server').S3Adapter;
 const ParseDashboard = require('parse-dashboard');
@@ -19,11 +24,9 @@ const PARSE_APP = PARSE_CONFIG.apps[0];
 if (!PARSE_APP.databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
 }
-if (!PARSE_APP.serverURL) {
-  PARSE_APP.serverURL = process.env.PORT
-    ? `http://localhost:${process.env.PORT}/parse`
-    : PARSE_APP.localServerURL || 'http://localhost:1337/parse';
-}
+const PARSE_SERVERURL = process.env.PORT
+  ? `http://localhost:${process.env.PORT}/parse`
+  : PARSE_APP.serverURL || PARSE_APP.localServerURL || 'http://localhost:1337/parse';
 
 // next
 const port = parseInt(process.env.PORT, 10) || 1337;
@@ -32,6 +35,16 @@ const app = next({ dev });
 const handle = app.getRequestHandler();
 
 process.on('SIGINT', () => process.exit());
+
+function ParseWrap(Parse: any, handler: any) {
+  return (req, res) => {
+    req.Parse = Parse;
+    return handler(req, res).catch(err => {
+      console.log('ERR:', err);
+      res.status(400).end();
+    });
+  };
+}
 
 app.prepare().then(() => {
   // set up
@@ -48,7 +61,7 @@ app.prepare().then(() => {
     appId: PARSE_APP.appId || 'myAppId',
     masterKey: PARSE_APP.masterKey || '', // Add your master key here. Keep it secret!
     fileKey: PARSE_APP.fileKey || '', // Add the file key to provide access to files already hosted on Parse
-    serverURL: PARSE_APP.serverURL, // Don't forget to change to https if needed
+    serverURL: PARSE_SERVERURL, // Don't forget to change to https if needed
     // liveQuery: {
     //   classNames: ["Posts", "Comments"] // List of classes to support for query subscriptions
     // },
@@ -76,6 +89,9 @@ app.prepare().then(() => {
   // make the Parse Dashboard available at /dashboard
   server.use('/dashboard', dashboard);
 
+  // add handler
+  addHandler(server);
+
   // if root, render webpage from next
   server.get('/*', (req, res) => app.render(req, res, '/', req.query));
 
@@ -90,10 +106,26 @@ app.prepare().then(() => {
   });
 
   // cron jobs for production
+  addCron();
+});
+
+function addHandler(server: express.Express) {
+  // Parse for node client
+  const Parse = require('parse/node').Parse;
+  Parse.initialize(PARSE_APP.appId || 'myAppId', null, PARSE_APP.masterKey || '');
+  Parse.serverURL = PARSE_SERVERURL;
+
+  // hanlder
+  server.get('/api/events', ParseWrap(Parse, eventsHandler.getEvents));
+  server.get('/api/projects', ParseWrap(Parse, projectHandler.getProjects));
+}
+
+function addCron() {
   if (process.env.NODE_ENV === 'production') {
     // Parse for node client
     const Parse = require('parse/node').Parse;
     Parse.initialize(PARSE_APP.appId || 'myAppId', null, PARSE_APP.masterKey || '');
+    // use external url for preventing heroku sleep
     Parse.serverURL = PARSE_APP.serverURL;
 
     // [ CronJob ]
@@ -110,9 +142,9 @@ app.prepare().then(() => {
 
     // backgroundJob
     crond.putJob('backgroundJob', null);
-    crond.addCron('backgroundJob', '0 */3 * * * *'); // per 3 minutes
+    crond.addCron('backgroundJob', '0 */5 * * * *'); // per 5 minutes
 
     // start
     crond.start();
   }
-});
+}

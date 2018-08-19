@@ -4,7 +4,17 @@ import styled from 'styled-components';
 import { RadialBarChart, RadialBar, Legend, Tooltip } from 'recharts';
 
 import '../assets/styles/globals';
-const contributonProjectJson = require('../contributon-project.json');
+import contributonProjectJson from '../contributon-project.json';
+
+type TMentor = { name: string; profileUrl: string };
+
+type TProject = {
+  projectId: string;
+  projectName: string;
+  description: string;
+  mentor: TMentor[];
+  Repository: string[];
+};
 
 const StyledLayoutContent = styled(Layout.Content)`
   border-top: 3px solid #71b6f9;
@@ -111,7 +121,7 @@ class App extends React.Component<IProps> {
         <Layout style={{ background: '#ebeff2' }}>
           <StyledLayoutContent>
             <Row>
-              {contributonProjectJson.project.map((n, nidx) => {
+              {(contributonProjectJson.project as TProject[]).map((n, nidx) => {
                 return (
                   <PaddedCol key={nidx} xs={24} lg={12} xl={6} xxl={6}>
                     <Project>
@@ -163,7 +173,7 @@ class App extends React.Component<IProps> {
                           {n.Repository.length > 0 ? (
                             <Tag
                               onClick={() => {
-                                window.open(n.Repository);
+                                window.open(n.Repository[0]);
                               }}
                             >
                               <Icon type="github" />

@@ -1,0 +1,4 @@
+{"error":{"code":255,"message":"Class Event is not empty, contains 89 objects, cannot drop schema."},"level":"error","message":"Error generating response. ParseError {\n  code: 255,\n  message: 'Class Event is not empty, contains 89 objects, cannot drop schema.' }","timestamp":"2018-08-19T13:36:55.860Z"}
+{"code":255,"message":"Class Event is not empty, contains 89 objects, cannot drop schema.","level":"error","timestamp":"2018-08-19T13:36:55.862Z"}
+{"error":{"code":255,"message":"Field created_at does not exist, cannot delete."},"level":"error","message":"Error generating response. ParseError {\n  code: 255,\n  message: 'Field created_at does not exist, cannot delete.' }","timestamp":"2018-08-19T13:41:26.115Z"}
+{"code":255,"message":"Field created_at does not exist, cannot delete.","level":"error","timestamp":"2018-08-19T13:41:26.116Z"}

@@ -1,0 +1,11 @@
+{"functionName":"backgroundJob","params":{},"level":"info","message":"Ran cloud function backgroundJob for user undefined with:\n  Input: {}\n  Result: {}","timestamp":"2018-08-19T12:30:36.987Z"}
+{"functionName":"backgroundJob","params":{},"level":"info","message":"Ran cloud function backgroundJob for user undefined with:\n  Input: {}\n  Result: {}","timestamp":"2018-08-19T12:33:25.093Z"}
+{"functionName":"backgroundJob","params":{},"level":"info","message":"Ran cloud function backgroundJob for user undefined with:\n  Input: {}\n  Result: {}","timestamp":"2018-08-19T12:33:46.459Z"}
+{"functionName":"backgroundJob","params":{},"level":"info","message":"Ran cloud function backgroundJob for user undefined with:\n  Input: {}\n  Result: {}","timestamp":"2018-08-19T12:35:15.494Z"}
+{"functionName":"backgroundJob","params":{},"level":"info","message":"Ran cloud function backgroundJob for user undefined with:\n  Input: {}\n  Result: {}","timestamp":"2018-08-19T12:38:43.788Z"}
+{"functionName":"backgroundJob","params":{},"level":"info","message":"Ran cloud function backgroundJob for user undefined with:\n  Input: {}\n  Result: {}","timestamp":"2018-08-19T13:05:44.569Z"}
+{"error":{"code":255,"message":"Class Event is not empty, contains 89 objects, cannot drop schema."},"level":"error","message":"Error generating response. ParseError {\n  code: 255,\n  message: 'Class Event is not empty, contains 89 objects, cannot drop schema.' }","timestamp":"2018-08-19T13:36:55.859Z"}
+{"code":255,"message":"Class Event is not empty, contains 89 objects, cannot drop schema.","level":"error","timestamp":"2018-08-19T13:36:55.862Z"}
+{"error":{"code":255,"message":"Field created_at does not exist, cannot delete."},"level":"error","message":"Error generating response. ParseError {\n  code: 255,\n  message: 'Field created_at does not exist, cannot delete.' }","timestamp":"2018-08-19T13:41:26.115Z"}
+{"code":255,"message":"Field created_at does not exist, cannot delete.","level":"error","timestamp":"2018-08-19T13:41:26.116Z"}
+{"functionName":"backgroundJob","params":{},"level":"info","message":"Ran cloud function backgroundJob for user undefined with:\n  Input: {}\n  Result: {}","timestamp":"2018-08-19T13:45:38.238Z"}

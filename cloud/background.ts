@@ -1,4 +1,5 @@
 // import moment from 'moment';
+import { cacheAllPojectEvents } from './events';
 
 module.exports.backgroundJob = async function(
   request: Parse.Cloud.FunctionRequest,
@@ -6,10 +7,11 @@ module.exports.backgroundJob = async function(
 ) {
   try {
     // Run
+    await cacheAllPojectEvents();
 
     response.success({});
   } catch (error) {
-    console.error('regionPost error', error);
+    console.log('regionPost error', error);
     return response.error(error);
   }
 };
