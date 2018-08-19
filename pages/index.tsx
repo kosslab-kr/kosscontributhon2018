@@ -124,6 +124,7 @@ class App extends React.Component<IProps> {
                       <PointContainer>
                         <div className={'point-chart'}>
                           <RadialBarChart
+                            id={nidx + 'chart'}
                             width={100}
                             height={100}
                             innerRadius="20%"
@@ -171,6 +172,7 @@ class App extends React.Component<IProps> {
                           {n.mentor.map((m, midx) => {
                             return m.name.length > 0 ? (
                               <Tag
+                                key={midx}
                                 onClick={() => {
                                   window.open(m.profileUrl);
                                 }}
