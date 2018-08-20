@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { Project, PointContainer, ProjectInfo } from '../styledComponent';
-import { Tag, Icon, Divider } from 'antd';
-import { RadialBarChart, RadialBar, Legend, Tooltip } from 'recharts';
+import { Tag, Icon, Divider, Tooltip } from 'antd';
+import { RadialBarChart, RadialBar, Legend } from 'recharts';
 
 type TMentor = { name: string; profileUrl: string };
 
@@ -82,14 +82,16 @@ class ProjectCard extends React.Component<IProps> {
           <p>{n.description}</p>
           <div className={'links'}>
             {n.Repository.map((r, ridx) => (
-              <Tag
-                key={ridx}
-                onClick={() => {
-                  window.open(r);
-                }}
-              >
-                <Icon type="github" />
-              </Tag>
+              <Tooltip title={r} placement="topLeft">
+                <Tag
+                  key={ridx}
+                  onClick={() => {
+                    window.open(r);
+                  }}
+                >
+                  <Icon type="github" />
+                </Tag>
+              </Tooltip>
             ))}
             {n.mentor.map((m, midx) => {
               return m.name.length > 0 ? (
