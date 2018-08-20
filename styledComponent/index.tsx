@@ -7,6 +7,7 @@ const StyledLayoutContent = styled(Layout.Content)`
   height: 100vh;
   padding: 2vh;
   overflow: auto;
+  -webkit-overflow-scrolling: touch;
 
   ::-webkit-scrollbar {
     width: 5px;
@@ -103,6 +104,7 @@ const StyledLayoutSider = styled(Layout.Sider)`
   overflow: auto;
   overflow-x: hidden;
   height: 100vh;
+  -webkit-overflow-scrolling: touch;
 
   ::-webkit-scrollbar {
     width: 5px;
