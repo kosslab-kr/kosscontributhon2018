@@ -94,6 +94,10 @@ async function saveEvent(project: TProject, event: any) {
   }
   projectM.set({ ...project });
   projectM.increment(event.type, 1);
+  // for commit count
+  if (event.type === 'PushEvent' && event.payload) {
+    projectM.increment('CommitCount', event.payload.distinct_size);
+  }
   await projectM.save();
 
   // project pointer
