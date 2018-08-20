@@ -24,7 +24,7 @@ const PaddedCol = styled(Col as any)`
 `;
 
 const Project = styled.div`
-  height: 22vh;
+  height: 240px;
   min-height: 240px;
   padding: 10px;
   box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);

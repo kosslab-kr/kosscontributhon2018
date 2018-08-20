@@ -32,7 +32,7 @@ interface IProps {
 class ProjectCard extends React.Component<IProps> {
   render() {
     const { project: n, pidx: nidx, totMaxCnt = 0 } = this.props;
-    const { CommitCount, IssuesEvent } = n;
+    const { CommitCount = 0, IssuesEvent = 0 } = n;
 
     return (
       <Project>
