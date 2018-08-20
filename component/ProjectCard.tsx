@@ -4,14 +4,35 @@ import { Project, PointContainer, ProjectInfo } from '../styledComponent';
 import { Tag, Icon, Divider } from 'antd';
 import { RadialBarChart, RadialBar, Legend, Tooltip } from 'recharts';
 
+type TMentor = { name: string; profileUrl: string };
+
+type TProject = {
+  projectId: string;
+  projectName: string;
+  description: string;
+  mentor: TMentor[];
+  Repository: string[];
+
+  CommitCount?: number;
+  ForkEvent?: number;
+  GollumEvent?: number;
+  IssueCommentEvent?: number;
+  IssuesEvent?: number;
+  PullRequestEvent?: number;
+  PushEvent?: number;
+  WatchEvent?: number;
+};
+
 interface IProps {
-  project?: any;
+  project?: TProject;
   pidx?: number;
+  totMaxCnt?: number;
 }
 
 class ProjectCard extends React.Component<IProps> {
   render() {
-    const { project: n, pidx: nidx } = this.props;
+    const { project: n, pidx: nidx, totMaxCnt = 0 } = this.props;
+    const { CommitCount, IssuesEvent } = n;
 
     return (
       <Project>
@@ -30,9 +51,9 @@ class ProjectCard extends React.Component<IProps> {
               innerRadius="20%"
               outerRadius="100%"
               data={[
-                { name: 'other', value: 100, fill: '#dddddd' },
-                { name: 'issue', value: 20, fill: '#71b6f9' },
-                { name: 'commit', value: 71, fill: '#f05050' },
+                { name: 'other', value: totMaxCnt, fill: '#dddddd' },
+                { name: 'issue', value: IssuesEvent, fill: '#71b6f9' },
+                { name: 'commit', value: CommitCount, fill: '#f05050' },
               ]}
               startAngle={240}
               endAngle={50}
@@ -44,13 +65,13 @@ class ProjectCard extends React.Component<IProps> {
             <div className={'point-commit'}>
               <Icon type="upload" />
               &nbsp;
-              <b>71</b>
+              <b>{CommitCount}</b>
               &nbsp; Commit
             </div>
             <div className={'point-issue'}>
               <Icon type="exclamation-circle-o" />
               &nbsp;
-              <b>20</b>
+              <b>{IssuesEvent}</b>
               &nbsp; Issue
             </div>
           </div>
@@ -60,15 +81,16 @@ class ProjectCard extends React.Component<IProps> {
           <h3>{n.projectName}</h3>
           <p>{n.description}</p>
           <div className={'links'}>
-            {n.Repository.length > 0 ? (
+            {n.Repository.map((r, ridx) => (
               <Tag
+                key={ridx}
                 onClick={() => {
-                  window.open(n.Repository);
+                  window.open(r);
                 }}
               >
                 <Icon type="github" />
               </Tag>
-            ) : null}
+            ))}
             {n.mentor.map((m, midx) => {
               return m.name.length > 0 ? (
                 <Tag

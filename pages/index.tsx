@@ -17,6 +17,9 @@ type TProject = {
   description: string;
   mentor: TMentor[];
   Repository: string[];
+  CommitCount?: number;
+  IssuesEvent?: number;
+  activeCnt?: number;
 };
 
 type TEvent = {
@@ -33,7 +36,9 @@ interface IProps {
 interface IState {}
 
 async function getEvents() {
-  const res = await fetch(`${process.env.BACKEND_URL}/api/events`);
+  const res = await fetch(
+    `${process.env.BACKEND_URL}/api/events?type=IssueCommentEvent,IssuesEvent,PullRequestEvent,PushEvent`,
+  );
   const json = await res.json();
   return json;
 }
@@ -103,133 +108,141 @@ const getEventIcon = function(eventType: string) {
   }
 };
 const getEventString = function(event: TEvent) {
-  let strs = [];
-
-  strs.push(
+  const EventHeader = () => (
     <div>
       <b className={'projectName'}>{event.repo.name}</b> {moment(event.updatedAt).fromNow()}
-    </div>,
+    </div>
   );
 
   switch (event.type) {
     case 'IssueCommentEvent':
-      strs.push(
-        <div className={'eventBody'}>
-          <Tag
-            color={'#ccc'}
-            onClick={() => {
-              window.open(event.payload.comment.user.html_url);
-            }}
-          >
-            {event.payload.comment.user.login}
-          </Tag>{' '}
-          {event.payload.comment.body.substr(0, 100)}
-          ...
-          <a
-            className="git-link"
-            onClick={() => {
-              window.open(event.payload.comment.html_url);
-            }}
-          >
-            {event.payload.comment.id}
-          </a>
-        </div>,
+      return (
+        <>
+          <EventHeader />
+          <div className={'eventBody'}>
+            <Tag
+              color={'#ccc'}
+              onClick={() => {
+                window.open(event.payload.comment.user.html_url);
+              }}
+            >
+              {event.payload.comment.user.login}
+            </Tag>{' '}
+            {event.payload.comment.body.substr(0, 100)}
+            ...
+            <a
+              className="git-link"
+              onClick={() => {
+                window.open(event.payload.comment.html_url);
+              }}
+            >
+              {event.payload.comment.id}
+            </a>
+          </div>
+        </>
       );
 
       break;
 
     case 'IssuesEvent':
-      strs.push(
-        <div className={'eventBody'}>
-          <Tag
-            color={'#ccc'}
-            onClick={() => {
-              window.open(event.payload.issue.user.html_url);
-            }}
-          >
-            {event.payload.issue.user.login}
-          </Tag>{' '}
-          {event.payload.issue.body.substr(0, 100)}
-          ...
-          <a
-            className="git-link"
-            onClick={() => {
-              window.open(event.payload.issue.html_url);
-            }}
-          >
-            {event.payload.issue.id}
-          </a>
-        </div>,
+      return (
+        <>
+          <EventHeader />
+          <div className={'eventBody'}>
+            <Tag
+              color={'#ccc'}
+              onClick={() => {
+                window.open(event.payload.issue.user.html_url);
+              }}
+            >
+              {event.payload.issue.user.login}
+            </Tag>{' '}
+            {event.payload.issue.body.substr(0, 100)}
+            ...
+            <a
+              className="git-link"
+              onClick={() => {
+                window.open(event.payload.issue.html_url);
+              }}
+            >
+              {event.payload.issue.id}
+            </a>
+          </div>
+        </>
       );
-
       break;
 
     case 'PullRequestEvent':
-      strs.push(
-        <div className={'eventBody'}>
-          <Tag
-            color={'#ccc'}
-            onClick={() => {
-              window.open(event.payload.pull_request.user.html_url);
-            }}
-          >
-            {event.payload.pull_request.user.login}
-          </Tag>
-          {event.payload.pull_request.body.substr(0, 100)}
-          ...
-          <a
-            className="git-link"
-            onClick={() => {
-              window.open(event.payload.pull_request.html_url);
-            }}
-          >
-            {event.payload.pull_request.id}
-          </a>
-        </div>,
+      return (
+        <>
+          <EventHeader />
+          <div className={'eventBody'}>
+            <Tag
+              color={'#ccc'}
+              onClick={() => {
+                window.open(event.payload.pull_request.user.html_url);
+              }}
+            >
+              {event.payload.pull_request.user.login}
+            </Tag>
+            {event.payload.pull_request.body.substr(0, 100)}
+            ...
+            <a
+              className="git-link"
+              onClick={() => {
+                window.open(event.payload.pull_request.html_url);
+              }}
+            >
+              {event.payload.pull_request.id}
+            </a>
+          </div>
+        </>
       );
 
       break;
 
     case 'PushEvent':
-      event.payload.commits.forEach((commit, idx) => {
-        strs.push(
-          <div className={'eventBody'}>
-            <Tag
-              color={'#ccc'}
-              onClick={() => {
-                window.open(`https://github.com/${commit.author.name}`);
-              }}
-            >
-              {commit.author.name}
-            </Tag>
-            {commit.message.substr(0, 100)}
-            ...
-            <a
-              className="git-link"
-              onClick={() => {
-                window.open(
-                  commit.url
-                    .replace('https://api.', 'https://')
-                    .replace('/repos/', '/')
-                    .replace('/commits/', '/commit/'),
-                );
-              }}
-            >
-              {commit.sha.substr(0, 7)}
-            </a>
-          </div>,
-        );
-      });
+      return (
+        <>
+          <EventHeader />
 
-      break;
+          {event.payload.commits.map((commit, idx) => {
+            return (
+              <div className={'eventBody'} key={idx}>
+                <Tag
+                  color={'#ccc'}
+                  onClick={() => {
+                    window.open(`https://github.com/${commit.author.name}`);
+                  }}
+                >
+                  {commit.author.name}
+                </Tag>
+                {commit.message.substr(0, 100)}
+                ...
+                <a
+                  className="git-link"
+                  onClick={() => {
+                    window.open(
+                      commit.url
+                        .replace('https://api.', 'https://')
+                        .replace('/repos/', '/')
+                        .replace('/commits/', '/commit/'),
+                    );
+                  }}
+                >
+                  {commit.sha.substr(0, 7)}
+                </a>
+              </div>
+            );
+          })}
+        </>
+      );
 
-    case 'ForkEvent':
       break;
 
     default:
+      return null;
   }
-
-  return strs;
 };
 
 class App extends React.Component<IProps, IState> {
@@ -245,16 +258,40 @@ class App extends React.Component<IProps, IState> {
 
   render() {
     const { projects, events } = this.props;
+    const mergeProjects = [...contributonProjectJson.project];
+    let totMaxCnt = 0;
+
+    for (let i = 0, l = mergeProjects.length; i < l; i++) {
+      mergeProjects[i].activeCnt = 0;
+
+      projects.forEach((p: TProject) => {
+        if (mergeProjects[i].projectId === p.projectId) {
+          mergeProjects[i] = { ...p };
+          mergeProjects[i].activeCnt = p.CommitCount || 0 + p.IssuesEvent || 0;
+          totMaxCnt = Math.max(p.CommitCount || 0, p.IssuesEvent || 0, totMaxCnt);
+        }
+      });
+    }
+
+    mergeProjects.sort(function(a: TProject, b: TProject) {
+      if (a.activeCnt < b.activeCnt) {
+        return 1;
+      } else if (a.activeCnt > b.activeCnt) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
 
     return (
       <Layout>
         <Layout style={{ background: '#ebeff2' }}>
           <StyledLayoutContent>
             <Row>
-              {(contributonProjectJson.project as TProject[]).map((n, nidx) => {
+              {(mergeProjects as TProject[]).map((n, nidx) => {
                 return (
                   <PaddedCol key={nidx} xs={24} lg={12} xl={6} xxl={6}>
-                    <ProjectCard project={n} pidx={nidx} />
+                    <ProjectCard project={n} pidx={nidx} totMaxCnt={totMaxCnt} />
                   </PaddedCol>
                 );
               })}
