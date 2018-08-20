@@ -101,6 +101,7 @@ const StyledLayoutSider = styled(Layout.Sider)`
   box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.06), 0 1px 0 0 rgba(0, 0, 0, 0.02);
   padding: 20px;
   overflow: auto;
+  overflow-x: hidden;
   height: 100vh;
 
   ::-webkit-scrollbar {
@@ -118,6 +119,23 @@ const StyledLayoutSider = styled(Layout.Sider)`
     color: #3576bb;
     text-align: center;
     font-size: 24px;
+    font-weight: 900;
+  }
+
+  .projectName {
+    color: #000;
+  }
+  .eventBody {
+    word-break: break-all;
+    margin-top: 5px;
+    font-size: 12px;
+    color: #888;
+    .ant-tag {
+      margin-right: 3px;
+      height: 18px;
+      line-height: 18px;
+      padding: 0 5px;
+    }
   }
 `;
 

@@ -1,9 +1,10 @@
 import * as React from 'react';
+import * as moment from 'moment';
 import 'isomorphic-unfetch';
 import '../assets/styles/globals';
 
 import { RadialBarChart, RadialBar, Legend, Tooltip } from 'recharts';
-import { Layout, Button, Menu, Icon, Card, Row, Col, Timeline, Divider, Tag, Badge } from 'antd';
+import { Layout, Button, Menu, Icon, Card, Row, Col, Timeline, Divider, Tag, Badge, Avatar } from 'antd';
 import { StyledLayoutContent, PaddedCol, StyledLayoutSider } from '../styledComponent';
 import { ProjectCard } from '../component';
 import contributonProjectJson from '../contributon-project.json';
@@ -48,7 +49,7 @@ const getEventIcon = function(eventType: string) {
     case 'PullRequestEvent':
     case 'PullRequestReviewEvent':
     case 'PullRequestReviewCommentEvent':
-      return <Icon type="cloud-upload-o" />;
+      return <Icon type="book" />;
       break;
     case 'PushEvent':
     case 'CommitCommentEvent':
@@ -104,15 +105,34 @@ const getEventIcon = function(eventType: string) {
 const getEventString = function(event: TEvent) {
   let strs = [];
 
-  strs.push(<Tag color={'red'}>{event.projectId}</Tag>);
-  strs.push(event.updatedAt);
-  strs.push(<div style={{ height: 3 }} />);
+  strs.push(
+    <div>
+      <b className={'projectName'}>{event.repo.name}</b> {moment(event.updatedAt).fromNow()}
+    </div>,
+  );
 
   switch (event.type) {
     case 'IssueCommentEvent':
       strs.push(
-        <div>
-          <Tag>{event.payload.comment.user.login}</Tag> {event.payload.comment.body.substr(0, 100)}
+        <div className={'eventBody'}>
+          <Tag
+            color={'#ccc'}
+            onClick={() => {
+              window.open(event.payload.comment.user.html_url);
+            }}
+          >
+            {event.payload.comment.user.login}
+          </Tag>{' '}
+          {event.payload.comment.body.substr(0, 100)}
+          ...
+          <a
+            className="git-link"
+            onClick={() => {
+              window.open(event.payload.comment.html_url);
+            }}
+          >
+            {event.payload.comment.id}
+          </a>
         </div>,
       );
 
@@ -120,9 +140,25 @@ const getEventString = function(event: TEvent) {
 
     case 'IssuesEvent':
       strs.push(
-        <div>
-          <Tag>{event.payload.issue.user.login}</Tag>
+        <div className={'eventBody'}>
+          <Tag
+            color={'#ccc'}
+            onClick={() => {
+              window.open(event.payload.issue.user.html_url);
+            }}
+          >
+            {event.payload.issue.user.login}
+          </Tag>{' '}
           {event.payload.issue.body.substr(0, 100)}
+          ...
+          <a
+            className="git-link"
+            onClick={() => {
+              window.open(event.payload.issue.html_url);
+            }}
+          >
+            {event.payload.issue.id}
+          </a>
         </div>,
       );
 
@@ -130,9 +166,25 @@ const getEventString = function(event: TEvent) {
 
     case 'PullRequestEvent':
       strs.push(
-        <div>
-          <Tag>{event.payload.pull_request.user.login}</Tag>
+        <div className={'eventBody'}>
+          <Tag
+            color={'#ccc'}
+            onClick={() => {
+              window.open(event.payload.pull_request.user.html_url);
+            }}
+          >
+            {event.payload.pull_request.user.login}
+          </Tag>
           {event.payload.pull_request.body.substr(0, 100)}
+          ...
+          <a
+            className="git-link"
+            onClick={() => {
+              window.open(event.payload.pull_request.html_url);
+            }}
+          >
+            {event.payload.pull_request.id}
+          </a>
         </div>,
       );
 
@@ -141,9 +193,30 @@ const getEventString = function(event: TEvent) {
     case 'PushEvent':
       event.payload.commits.forEach((commit, idx) => {
         strs.push(
-          <div>
-            <Tag>{commit.author.name}</Tag>
+          <div className={'eventBody'}>
+            <Tag
+              color={'#ccc'}
+              onClick={() => {
+                window.open(`https://github.com/${commit.author.name}`);
+              }}
+            >
+              {commit.author.name}
+            </Tag>
             {commit.message.substr(0, 100)}
+            ...
+            <a
+              className="git-link"
+              onClick={() => {
+                window.open(
+                  commit.url
+                    .replace('https://api.', 'https://')
+                    .replace('/repos/', '/')
+                    .replace('/commits/', '/commit/'),
+                );
+              }}
+            >
+              {commit.sha.substr(0, 7)}
+            </a>
           </div>,
         );
       });
@@ -162,6 +235,11 @@ const getEventString = function(event: TEvent) {
 class App extends React.Component<IProps, IState> {
   static async getInitialProps() {
     const data = await Promise.all([getProjects(), getEvents()]);
+
+    setTimeout(() => {
+      App.getInitialProps();
+    }, 5 * 1000 * 60);
+
     return { projects: data[0], events: data[1] };
   }
 
@@ -193,14 +271,6 @@ class App extends React.Component<IProps, IState> {
           <div>
             <Timeline>
               {events.map((event: TEvent, eventIdx: number) => {
-                if (
-                  event.type !== 'IssueCommentEvent' &&
-                  event.type !== 'IssuesEvent' &&
-                  event.type !== 'PullRequestEvent'
-                ) {
-                  console.log(event);
-                }
-
                 if (
                   event.type === 'IssueCommentEvent' ||
                   event.type === 'IssuesEvent' ||
