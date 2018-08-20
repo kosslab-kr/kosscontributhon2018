@@ -256,8 +256,8 @@ class App extends React.Component<IProps, IState> {
   setTimeoutHandler() {
     clearTimeout(this.setTimeReload);
     this.setTimeReload = setTimeout(() => {
-      console.log('router push');
       clearTimeout(this.setTimeReload);
+      console.log('Reload App :', new Date());
       Router.push('/');
     }, 60 * 1000 * 5);
   }
@@ -271,7 +271,6 @@ class App extends React.Component<IProps, IState> {
   }
 
   render() {
-    console.log('render App');
     const { projects, events } = this.props;
     const mergeProjects = [...contributonProjectJson.project];
     let totMaxCnt = 0;
