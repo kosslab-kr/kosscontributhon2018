@@ -271,7 +271,6 @@ class App extends React.Component<IProps, IState> {
   }
 
   render() {
-    console.log('render App');
     const { projects, events } = this.props;
     const mergeProjects = [...contributonProjectJson.project];
     let totMaxCnt = 0;
