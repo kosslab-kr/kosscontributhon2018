@@ -60,7 +60,11 @@ async function cacheGithubEvents(project: TProject, repository: string) {
 }
 
 async function getGithubEvents(_url: string, page: number = 1) {
-  const url = `${_url.replace('github.com', 'api.github.com/repos')}/events?page=${page}`;
+  const url = `${_url.replace('github.com', 'api.github.com/repos')}/events?page=${page}`.replace(
+    '//events?',
+    '/events?',
+  );
+  console.log('url', url);
   const httpResponse = await Parse.Cloud.httpRequest({
     url,
     method: 'GET',
