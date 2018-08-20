@@ -1,40 +1,56 @@
 {
-  "project": [
-    {
+  "project": [{
       "projectId": "ankus",
       "projectName": "ankus",
       "description": "ankus - Lite for web data analysis",
-      "mentor": [{"name": "", "profileUrl": ""}],
+      "mentor": [{
+        "name": "",
+        "profileUrl": ""
+      }],
       "Repository": []
     },
     {
       "projectId": "chromium",
       "projectName": "Chromium / Blink",
       "description": "Chromium / Blink 프로젝트 기여하기",
-      "mentor": [{"name": "", "profileUrl": ""}],
+      "mentor": [{
+        "name": "",
+        "profileUrl": ""
+      }],
       "Repository": []
     },
     {
       "projectId": "keras",
       "projectName": "Keras(+Tensorflow) Documentation",
       "description": "Contiribute to Keras(+Tensorflow) Documentation",
-      "mentor": [{"name": "", "profileUrl": ""}],
+      "mentor": [{
+        "name": "",
+        "profileUrl": ""
+      }],
       "Repository": []
     },
     {
       "projectId": "cubrid",
       "projectName": "CMS with CUBRID DBMS",
       "description": "CUBRID DBMS를 적용한 CMS(Content Management System)",
-      "mentor": [{"name": "", "profileUrl": ""}],
+      "mentor": [{
+        "name": "",
+        "profileUrl": ""
+      }],
       "Repository": ["https://github.com/cubrid-cms"]
     },
     {
       "projectId": "gitshare",
       "projectName": "GitShare",
       "description": "Share your code beautifully. Anywhere. - gitCodeShare.com",
-      "mentor": [
-        {"name": "김동우", "profileUrl": "https://github.com/gimdongwoo"},
-        {"name": "장기영", "profileUrl": "https://github.com/thomasJang"}
+      "mentor": [{
+          "name": "김동우",
+          "profileUrl": "https://github.com/gimdongwoo"
+        },
+        {
+          "name": "장기영",
+          "profileUrl": "https://github.com/thomasJang"
+        }
       ],
       "Repository": ["https://github.com/kosslab-kr/gitCodeShare.com"]
     },
@@ -42,77 +58,110 @@
       "projectId": "guider",
       "projectName": "Guider",
       "description": "Guider 프로젝트 기여하기",
-      "mentor": [{"name": "", "profileUrl": ""}],
+      "mentor": [{
+        "name": "",
+        "profileUrl": ""
+      }],
       "Repository": ["https://github.com/iipeace/guider"]
     },
     {
       "projectId": "it_chain",
       "projectName": "it-chain",
       "description": "it-chain 프로젝트 기여하기",
-      "mentor": [{"name": "", "profileUrl": ""}],
+      "mentor": [{
+        "name": "",
+        "profileUrl": ""
+      }],
       "Repository": ["https://github.com/it-chain/engine"]
     },
     {
       "projectId": "netfilter",
       "projectName": "Netfilter",
       "description": "Netfilter 프로젝트 기여하기",
-      "mentor": [{"name": "", "profileUrl": ""}],
+      "mentor": [{
+        "name": "",
+        "profileUrl": ""
+      }],
       "Repository": []
     },
     {
       "projectId": "openstack",
       "projectName": "OpenStack",
       "description": "OpenStack 프로젝트 기여하기",
-      "mentor": [{"name": "", "profileUrl": ""}],
+      "mentor": [{
+        "name": "",
+        "profileUrl": ""
+      }],
       "Repository": []
     },
     {
       "projectId": "presto_music",
       "projectName": "Presto Music",
       "description": "Presto Music 프로젝트 기여하기",
-      "mentor": [{"name": "", "profileUrl": ""}],
+      "mentor": [{
+        "name": "",
+        "profileUrl": ""
+      }],
       "Repository": ["https://github.com/kosslab-kr/Presto.Contributhon"]
     },
     {
       "projectId": "tizen_xamarin",
       "projectName": "Tizen C#/Xamarin",
       "description": "Tizen C#/Xamarin Sample App 개발",
-      "mentor": [{"name": "", "profileUrl": ""}],
+      "mentor": [{
+        "name": "",
+        "profileUrl": ""
+      }],
       "Repository": []
     },
     {
       "projectId": "tizen_nnapi",
       "projectName": "Tizen NN API",
       "description": "Tizen NN API & Runtime 프로젝트 기여하기",
-      "mentor": [{"name": "", "profileUrl": ""}],
+      "mentor": [{
+        "name": "",
+        "profileUrl": ""
+      }],
       "Repository": []
     },
     {
       "projectId": "uftrace",
       "projectName": "uftrace",
       "description": "uftrace 프로젝트 기여하기",
-      "mentor": [{"name": "", "profileUrl": ""}],
+      "mentor": [{
+        "name": "",
+        "profileUrl": ""
+      }],
       "Repository": []
     },
     {
       "projectId": "webos",
       "projectName": "webOS OSE",
       "description": "webOS Open Source Edition 프로젝트 기여하기",
-      "mentor": [{"name": "", "profileUrl": ""}],
+      "mentor": [{
+        "name": "",
+        "profileUrl": ""
+      }],
       "Repository": []
     },
     {
       "projectId": "goorm",
       "projectName": "구름입력기",
       "description": "구름입력기 프로젝트 기여하기",
-      "mentor": [{"name": "", "profileUrl": ""}],
-      "Repository": ["https://github.com/gureum/gureum/"]
+      "mentor": [{
+        "name": "",
+        "profileUrl": ""
+      }],
+      "Repository": ["https://github.com/gureum/gureum"]
     },
     {
       "projectId": "kaggle_kernel_ko",
       "projectName": "캐글 커널 한글화",
       "description": "캐글 속 커널 한글화 작업을 통한 데이터 사이언스 대중화",
-      "mentor": [{"name": "", "profileUrl": ""}],
+      "mentor": [{
+        "name": "",
+        "profileUrl": ""
+      }],
       "Repository": ["https://github.com/kosslab-kr/Kaggle_KR"]
     }
   ]

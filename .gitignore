@@ -20,3 +20,4 @@ debug.log
 *debug.log
 Bundled*.js
 .env
+logs/
