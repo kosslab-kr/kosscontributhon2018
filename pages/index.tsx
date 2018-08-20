@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as moment from 'moment';
+import Router from 'next/router';
 import 'isomorphic-unfetch';
 import '../assets/styles/globals';
 
@@ -248,15 +249,29 @@ const getEventString = function(event: TEvent) {
 class App extends React.Component<IProps, IState> {
   static async getInitialProps() {
     const data = await Promise.all([getProjects(), getEvents()]);
-
-    setTimeout(() => {
-      App.getInitialProps();
-    }, 5 * 1000 * 60);
-
     return { projects: data[0], events: data[1] };
   }
 
+  setTimeReload: any;
+  setTimeoutHandler() {
+    clearTimeout(this.setTimeReload);
+    this.setTimeReload = setTimeout(() => {
+      console.log('router push');
+      clearTimeout(this.setTimeReload);
+      Router.push('/');
+    }, 60 * 1000 * 5);
+  }
+
+  componentDidMount() {
+    this.setTimeoutHandler();
+  }
+
+  componentDidUpdate() {
+    this.setTimeoutHandler();
+  }
+
   render() {
+    console.log('render App');
     const { projects, events } = this.props;
     const mergeProjects = [...contributonProjectJson.project];
     let totMaxCnt = 0;
