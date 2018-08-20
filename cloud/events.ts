@@ -17,11 +17,13 @@ export async function cacheAllPojectEvents() {
   const projects: TProject[] = contributonProjectJson.project;
   for (let i = 0; i < projects.length; i++) {
     const project = projects[i];
+    console.log('cacheProjectEvent start : ', project.projectId);
     try {
       await cacheProjectEvent(project);
     } catch (error) {
       console.log('cacheProjectEvent project:', project, 'error:', error);
     }
+    console.log('cacheProjectEvent end : ', project.projectId);
   }
 }
 
@@ -32,26 +34,39 @@ export async function cacheProjectEvent(project: TProject) {
 
   const repositories = project.Repository;
   for (let i = 0; i < repositories.length; i++) {
-    await cacheGithubEvents(project, repositories[i]);
+    const repoUrl = repositories[i];
+    // github
+    if (repoUrl.indexOf('github.com') > -1) {
+      await cacheGithubEvents(project, repositories[i]);
+    }
   }
 }
 
 async function cacheGithubEvents(project: TProject, repository: string) {
-  // get event
-  const events = await getGithubEvents(repository);
-  // save event
-  for (let i = 0; i < events.length; i++) {
-    await saveEvent(project, events[i]);
+  // project init check
+  const projectQ = new Parse.Query('Project');
+  projectQ.equalTo('projectId', project.projectId);
+  const projectM = await projectQ.first();
+  const maxPage = projectM ? 1 : 10;
+
+  for (let page = 1; page <= maxPage; page++) {
+    // get event
+    const events = await getGithubEvents(repository, page);
+    // save event
+    for (let i = 0; i < events.length; i++) {
+      await saveEvent(project, events[i]);
+    }
   }
 }
 
-async function getGithubEvents(_url: string) {
-  const url = `${_url.replace('github.com', 'api.github.com/repos')}/events`;
+async function getGithubEvents(_url: string, page: number = 1) {
+  const url = `${_url.replace('github.com', 'api.github.com/repos')}/events?page=${page}`;
   const httpResponse = await Parse.Cloud.httpRequest({
     url,
     method: 'GET',
     headers: {
       'User-Agent': 'request',
+      Authorization: `token ${process.env.GITHUB_TOKEN}`,
     },
   });
   const responseData = httpResponse.data || JSON.parse(httpResponse.text);
