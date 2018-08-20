@@ -114,6 +114,7 @@ const StyledLayoutSider = styled(Layout.Sider)`
   }
 
   h2 {
+    font-family: 'Karla', sans-serif;
     color: #3576bb;
     text-align: center;
     font-size: 24px;

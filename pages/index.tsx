@@ -24,11 +24,12 @@ type TEvent = {
   [k: string]: any;
 };
 
-interface IProps {}
-
-interface IState {
+interface IProps {
+  projects: TProject[];
   events: TEvent[];
 }
+
+interface IState {}
 
 async function getEvents() {
   const res = await fetch(`${process.env.BACKEND_URL}/api/events`);
@@ -42,6 +43,122 @@ async function getProjects() {
   return json;
 }
 
+const getEventIcon = function(eventType: string) {
+  switch (eventType) {
+    case 'PullRequestEvent':
+    case 'PullRequestReviewEvent':
+    case 'PullRequestReviewCommentEvent':
+      return <Icon type="cloud-upload-o" />;
+      break;
+    case 'PushEvent':
+    case 'CommitCommentEvent':
+      return <Icon type="upload" />;
+      break;
+    case 'IssueCommentEvent':
+      return <Icon type="message" />;
+      break;
+    case 'IssuesEvent':
+      return <Icon type="exclamation-circle-o" />;
+      break;
+    case 'CheckRunEvent':
+    case 'CheckSuiteEvent':
+    case 'CreateEvent':
+    case 'DeleteEvent':
+    case 'DeploymentEvent':
+    case 'DeploymentStatusEvent':
+    case 'DownloadEvent':
+    case 'FollowEvent':
+    case 'ForkEvent':
+    case 'ForkApplyEvent':
+    case 'GitHubAppAuthorizationEvent':
+    case 'GistEvent':
+    case 'GollumEvent':
+    case 'InstallationEvent':
+    case 'InstallationRepositoriesEvent':
+    case 'LabelEvent':
+    case 'MarketplacePurchaseEvent':
+    case 'MemberEvent':
+    case 'MembershipEvent':
+    case 'MilestoneEvent':
+    case 'OrganizationEvent':
+    case 'OrgBlockEvent':
+    case 'PageBuildEvent':
+    case 'ProjectCardEvent':
+    case 'ProjectColumnEvent':
+    case 'ProjectEvent':
+    case 'PublicEvent':
+    case 'ReleaseEvent':
+    case 'RepositoryEvent':
+    case 'RepositoryImportEvent':
+    case 'RepositoryVulnerabilityAlertEvent':
+    case 'StatusEvent':
+    case 'TeamEvent':
+    case 'TeamAddEvent':
+    case 'WatchEvent':
+      return null;
+      break;
+    default:
+      return null;
+  }
+};
+const getEventString = function(event: TEvent) {
+  let strs = [];
+
+  strs.push(<Tag color={'red'}>{event.projectId}</Tag>);
+  strs.push(event.updatedAt);
+  strs.push(<div style={{ height: 3 }} />);
+
+  switch (event.type) {
+    case 'IssueCommentEvent':
+      strs.push(
+        <div>
+          <Tag>{event.payload.comment.user.login}</Tag> {event.payload.comment.body.substr(0, 100)}
+        </div>,
+      );
+
+      break;
+
+    case 'IssuesEvent':
+      strs.push(
+        <div>
+          <Tag>{event.payload.issue.user.login}</Tag>
+          {event.payload.issue.body.substr(0, 100)}
+        </div>,
+      );
+
+      break;
+
+    case 'PullRequestEvent':
+      strs.push(
+        <div>
+          <Tag>{event.payload.pull_request.user.login}</Tag>
+          {event.payload.pull_request.body.substr(0, 100)}
+        </div>,
+      );
+
+      break;
+
+    case 'PushEvent':
+      event.payload.commits.forEach((commit, idx) => {
+        strs.push(
+          <div>
+            <Tag>{commit.author.name}</Tag>
+            {commit.message.substr(0, 100)}
+          </div>,
+        );
+      });
+
+      break;
+
+    case 'ForkEvent':
+      break;
+
+    default:
+  }
+
+  return strs;
+};
+
 class App extends React.Component<IProps, IState> {
   static async getInitialProps() {
     const data = await Promise.all([getProjects(), getEvents()]);
@@ -49,6 +166,8 @@ class App extends React.Component<IProps, IState> {
   }
 
   render() {
+    const { projects, events } = this.props;
+
     return (
       <Layout>
         <Layout style={{ background: '#ebeff2' }}>
@@ -68,47 +187,35 @@ class App extends React.Component<IProps, IState> {
           <h2>2018 OSS Contributon</h2>
           <Divider />
           <p>
-            <b style={{ fontSize: 16 }}>Recently Events</b> (2018-08-01 ~ 2018-08-19)
+            <b style={{ fontSize: 16 }}>Recently Events</b>
           </p>
           <div style={{ height: 10 }} />
           <div>
             <Timeline>
-              <Timeline.Item dot={<Icon type="upload" />}>Create a services site 2015-09-01</Timeline.Item>
-              <Timeline.Item dot={<Icon type="message" />}>Solve initial network problems 2015-09-01</Timeline.Item>
-              <Timeline.Item dot={<Icon type="exclamation-circle-o" />} color={'red'}>
-                Technical testing 2015-09-01
-              </Timeline.Item>
-              <Timeline.Item dot={<Icon type="upload" />}>Network problems being solved 2015-09-01</Timeline.Item>
-              <Timeline.Item dot={<Icon type="upload" />}>Create a services site 2015-09-01</Timeline.Item>
-              <Timeline.Item dot={<Icon type="message" />}>Solve initial network problems 2015-09-01</Timeline.Item>
-              <Timeline.Item dot={<Icon type="exclamation-circle-o" />} color={'red'}>
-                Technical testing 2015-09-01
-              </Timeline.Item>
-              <Timeline.Item dot={<Icon type="upload" />}>Network problems being solved 2015-09-01</Timeline.Item>
-              <Timeline.Item dot={<Icon type="star" />}>Create a services site 2015-09-01</Timeline.Item>
-              <Timeline.Item dot={<Icon type="message" />}>Solve initial network problems 2015-09-01</Timeline.Item>
-              <Timeline.Item dot={<Icon type="exclamation-circle-o" />} color={'red'}>
-                Technical testing 2015-09-01
-              </Timeline.Item>
-              <Timeline.Item dot={<Icon type="upload" />}>Network problems being solved 2015-09-01</Timeline.Item>
-              <Timeline.Item dot={<Icon type="upload" />}>Create a services site 2015-09-01</Timeline.Item>
-              <Timeline.Item dot={<Icon type="message" />}>Solve initial network problems 2015-09-01</Timeline.Item>
-              <Timeline.Item dot={<Icon type="exclamation-circle-o" />} color={'red'}>
-                Technical testing 2015-09-01
-              </Timeline.Item>
-              <Timeline.Item dot={<Icon type="upload" />}>Network problems being solved 2015-09-01</Timeline.Item>
-              <Timeline.Item dot={<Icon type="upload" />}>Create a services site 2015-09-01</Timeline.Item>
-              <Timeline.Item dot={<Icon type="message" />}>Solve initial network problems 2015-09-01</Timeline.Item>
-              <Timeline.Item dot={<Icon type="exclamation-circle-o" />} color={'red'}>
-                Technical testing 2015-09-01
-              </Timeline.Item>
-              <Timeline.Item dot={<Icon type="upload" />}>Network problems being solved 2015-09-01</Timeline.Item>
-              <Timeline.Item dot={<Icon type="upload" />}>Create a services site 2015-09-01</Timeline.Item>
-              <Timeline.Item dot={<Icon type="message" />}>Solve initial network problems 2015-09-01</Timeline.Item>
-              <Timeline.Item dot={<Icon type="exclamation-circle-o" />} color={'red'}>
-                Technical testing 2015-09-01
-              </Timeline.Item>
-              <Timeline.Item dot={<Icon type="upload" />}>Network problems being solved 2015-09-01</Timeline.Item>
+              {events.map((event: TEvent, eventIdx: number) => {
+                if (
+                  event.type !== 'IssueCommentEvent' &&
+                  event.type !== 'IssuesEvent' &&
+                  event.type !== 'PullRequestEvent'
+                ) {
+                  console.log(event);
+                }
+
+                if (
+                  event.type === 'IssueCommentEvent' ||
+                  event.type === 'IssuesEvent' ||
+                  event.type === 'PullRequestEvent' ||
+                  event.type === 'PushEvent'
+                ) {
+                  return (
+                    <Timeline.Item key={eventIdx} dot={getEventIcon(event.type)}>
+                      {getEventString(event)}
+                    </Timeline.Item>
+                  );
+                } else {
+                  return null;
+                }
+              })}
             </Timeline>
           </div>
         </StyledLayoutSider>
