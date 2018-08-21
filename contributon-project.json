@@ -57,12 +57,12 @@
     {
       "projectId": "guider",
       "projectName": "Guider",
-      "description": "Guider 프로젝트 기여하기",
+      "description": "a system-wide performance analyzer",
       "mentor": [{
-        "name": "",
-        "profileUrl": ""
+        "name": "이평화",
+        "profileUrl": "https://github.com/iipeace"
       }],
-      "Repository": ["https://github.com/iipeace/guider"]
+      "Repository": ["https://github.com/kosslab-kr/guider"]
     },
     {
       "projectId": "it_chain",
