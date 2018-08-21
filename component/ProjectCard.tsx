@@ -28,6 +28,9 @@ interface IProps {
   pidx?: number;
   totMaxCnt?: number;
 }
+interface IState {
+  showZero: boolean;
+}
 
 class ProjectCard extends React.Component<IProps> {
   render() {
@@ -82,9 +85,8 @@ class ProjectCard extends React.Component<IProps> {
           <p>{n.description}</p>
           <div className={'links'}>
             {n.Repository.map((r, ridx) => (
-              <Tooltip title={r} placement="topLeft">
+              <Tooltip title={r} placement="topLeft" key={ridx}>
                 <Tag
-                  key={ridx}
                   onClick={() => {
                     window.open(r);
                   }}

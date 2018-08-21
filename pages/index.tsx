@@ -5,7 +5,7 @@ import 'isomorphic-unfetch';
 import '../assets/styles/globals';
 
 import { RadialBarChart, RadialBar, Legend, Tooltip } from 'recharts';
-import { Layout, Button, Menu, Icon, Card, Row, Col, Timeline, Divider, Tag, Badge, Avatar } from 'antd';
+import { Layout, Button, Menu, Icon, Card, Row, Col, Timeline, Divider, Tag, Badge, Avatar, message } from 'antd';
 import { StyledLayoutContent, PaddedCol, StyledLayoutSider } from '../styledComponent';
 import { ProjectCard } from '../component';
 import contributonProjectJson from '../contributon-project.json';
@@ -271,6 +271,7 @@ class App extends React.Component<IProps, IState> {
   }
 
   render() {
+    message.info('데이터를 동기화 하였습니다.', 2.5);
     const { projects, events } = this.props;
     const mergeProjects = [...contributonProjectJson.project];
     let totMaxCnt = 0;
