@@ -37,7 +37,7 @@ Contributhon?
 
 프로젝트3. Contiribute to Keras(+Tensorflow) Documentation (멘토 김태영, 이상훈)
   - [활동 내용](https://....................................................)
-  - [Repository](https://....................................................)
+  - [Repository](https://github.com/KerasKorea/KEKOxTutorial)
 
 프로젝트4. CUBRID DBMS를 적용한 CMS(Content Management System) (멘토 김병욱)
   - [활동 내용](https://....................................................)
