@@ -34,8 +34,8 @@
       "projectName": "CMS with CUBRID DBMS",
       "description": "CUBRID DBMS를 적용한 CMS(Content Management System)",
       "mentor": [{
-        "name": "",
-        "profileUrl": ""
+        "name": "김병욱",
+        "profileUrl": "https://github.com/cubrid-cms"
       }],
       "Repository": ["https://github.com/cubrid-cms/drupal-cubrid", "https://github.com/cubrid-cms/joomla-cubrid"]
     },
