@@ -27,7 +27,7 @@
         "name": "",
         "profileUrl": ""
       }],
-      "Repository": []
+      "Repository": ["https://github.com/KerasKorea/KEKOxTutorial"]
     },
     {
       "projectId": "cubrid",
