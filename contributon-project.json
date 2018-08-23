@@ -21,12 +21,16 @@
     },
     {
       "projectId": "keras",
-      "projectName": "Keras(+Tensorflow) Documentation",
-      "description": "Contiribute to Keras(+Tensorflow) Documentation",
+      "projectName": "Keras(+Tensorflow) Korean Documentation",
+      "description": "영어로 작성된 멋진 케라스 튜토리얼을 한글화하여 케라스가 널리&쉽게 사용되도록 기여합니다",
       "mentor": [{
-        "name": "",
-        "profileUrl": ""
-      }],
+        "name": "김태영",
+        "profileUrl": "https://github.com/tykimos"
+      },
+      { "name": "전미정",
+        "profileUrl": "https://github.com/MijeongJeon"
+      }
+    ],
       "Repository": ["https://github.com/KerasKorea/KEKOxTutorial"]
     },
     {
