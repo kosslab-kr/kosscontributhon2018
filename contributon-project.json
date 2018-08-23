@@ -149,11 +149,11 @@
       "Repository": ["https://github.com/webosce"]
     },
     {
-      "projectId": "goorm",
+      "projectId": "gureum",
       "projectName": "구름입력기",
-      "description": "구름입력기 프로젝트 기여하기",
+      "description": "macOS를 위한 새로운 한글 입력기",
       "mentor": [{
-        "name": "",
+        "name": "정윤원",
         "profileUrl": ""
       }],
       "Repository": ["https://github.com/gureum/gureum"]
