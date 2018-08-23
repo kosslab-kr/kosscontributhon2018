@@ -139,7 +139,7 @@
       "projectName": "webOS OSE",
       "description": "webOS Open Source Edition 프로젝트 기여하기",
       "mentor": [{
-        "name": "배창혁, 김민재, 강성재, 고석하"
+        "name": "배창혁, 김민재, 강성재, 고석하",
         "profileUrl": ""
       }],
       "Repository": ["https://github.com/webosce"]
