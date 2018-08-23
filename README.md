@@ -81,7 +81,7 @@ Contributhon?
   
 프로젝트14. webOS Open Source Edition (2개팀) (멘토 배창혁, 김민재, 강성재, 고석하)
   - [활동 내용](https://....................................................)
-  - [Repository](http://github.com/webosose)
+  - [Repository](http://github.com/webosce)
 
 프로젝트15. 구름입력기 (멘토 정윤원)
   - [활동 내용](https://....................................................)
