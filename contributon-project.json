@@ -133,10 +133,10 @@
       "projectName": "uftrace",
       "description": "uftrace 프로젝트 기여하기",
       "mentor": [{
-        "name": "",
-        "profileUrl": ""
+        "name": "송태웅",
+        "profileUrl": "https://github.com/Taeung"
       }],
-      "Repository": []
+      "Repository": ["https://github.com/kosslab-kr/uftrace"]
     },
     {
       "projectId": "webos",
