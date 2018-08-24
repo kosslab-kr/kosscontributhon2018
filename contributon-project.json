@@ -91,12 +91,27 @@
     {
       "projectId": "openstack",
       "projectName": "OpenStack",
-      "description": "OpenStack 프로젝트 기여하기",
+      "description": "OpenStack 컨트리뷰션 - 방대한 프로젝트 저장소들을 위한 국제화, 문서화 지원 및 도구 기여",
       "mentor": [{
-        "name": "",
+        "name": "최영락",
+        "profileUrl": "https://github.com/ianychoi"
+      },{
+        "name": "신호철",
         "profileUrl": ""
+      },{
+        "name": "조성수",
+        "profileUrl": "https://github.com/ppiyakk2"
+      },{
+        "name": "장태희",
+        "profileUrl": "https://github.com/janghe11"
+      },{
+        "name": "공용준",
+        "profileUrl": "https://github.com/sstrato"
+      },{
+        "name": "강성진",
+        "profileUrl": "https://github.com/ujuc"
       }],
-      "Repository": []
+      "Repository": ["https://github.com/openstack-kr/contributhon-2018-team1", "https://github.com/openstack-kr/contributhon-2018-team2"]
     },
     {
       "projectId": "presto_music",
