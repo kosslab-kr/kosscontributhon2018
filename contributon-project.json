@@ -131,8 +131,8 @@
     {
       "projectId": "uftrace",
       "projectName": "uftrace",
-	"description": "uftrace 프로젝트 기여하기",
-	"mentor": [{
+    	"description": "uftrace 프로젝트 기여하기",
+    	"mentor": [{
             "name": "송태웅",
             "profileUrl": "https://github.com/taeung"
         },
