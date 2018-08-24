@@ -172,8 +172,14 @@
       "projectName": "캐글 커널 한글화",
       "description": "캐글 속 커널 한글화 작업을 통한 데이터 사이언스 대중화",
       "mentor": [{
-        "name": "",
-        "profileUrl": ""
+        "name": "이유한",
+        "profileUrl": "https://github.com/qkqkfldis1"
+      },{
+        "name": "강천성",
+        "profileUrl": "https://github.com/kcs93023"
+      },{
+        "name": "김준태",
+        "profileUrl": "https://github.com/OPAYA"
       }],
       "Repository": ["https://github.com/kosslab-kr/Kaggle_KR"]
     }
