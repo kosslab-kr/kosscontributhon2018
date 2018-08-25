@@ -67,15 +67,28 @@ class ProjectCard extends React.Component<IProps> {
           <div className={'point-board'}>
             <div className={'point-commit'}>
               <Icon type="upload" />
-              &nbsp;
+              &nbsp;&nbsp;
               <b>{CommitCount}</b>
-              &nbsp; Commit
+              Commit
             </div>
             <div className={'point-issue'}>
               <Icon type="exclamation-circle-o" />
-              &nbsp;
+              &nbsp;&nbsp;
               <b>{IssuesEvent}</b>
-              &nbsp; Issue
+              Issue
+            </div>
+            <div className={'repos'}>
+              {n.Repository.map((r, ridx) => (
+                <Tooltip title={r} placement="topLeft" key={ridx}>
+                  <Tag
+                    onClick={() => {
+                      window.open(r);
+                    }}
+                  >
+                    <Icon type="github" />
+                  </Tag>
+                </Tooltip>
+              ))}
             </div>
           </div>
         </PointContainer>
@@ -84,17 +97,6 @@ class ProjectCard extends React.Component<IProps> {
           <h3>{n.projectName}</h3>
           <p>{n.description}</p>
           <div className={'links'}>
-            {n.Repository.map((r, ridx) => (
-              <Tooltip title={r} placement="topLeft" key={ridx}>
-                <Tag
-                  onClick={() => {
-                    window.open(r);
-                  }}
-                >
-                  <Icon type="github" />
-                </Tag>
-              </Tooltip>
-            ))}
             {n.mentor.map((m, midx) => {
               return m.name.length > 0 ? (
                 <Tag

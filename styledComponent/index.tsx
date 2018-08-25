@@ -25,8 +25,8 @@ const PaddedCol = styled(Col as any)`
 `;
 
 const Project = styled.div`
-  height: 240px;
-  min-height: 240px;
+  height: 270px;
+  min-height: 270px;
   padding: 10px;
   box-shadow: 0 0px 8px 0 rgba(0, 0, 0, 0.06), 0 1px 0px 0 rgba(0, 0, 0, 0.02);
   border-radius: 5px;
@@ -46,10 +46,10 @@ const Project = styled.div`
 const PointContainer = styled.div`
   display: flex;
   flex-direction: row;
-
+  position: relative;
   .point-board {
-    padding-top: 45px;
-    margin-left: -30px;
+    padding-top: 42px;
+    margin-left: -25px;
   }
 
   .point-commit,
@@ -61,6 +61,13 @@ const PointContainer = styled.div`
   }
   .point-issue {
     color: #71b6f9;
+  }
+
+  .repos {
+    position: absolute;
+    left: 90px;
+    top: 8px;
+    padding-top: 3px;
   }
 `;
 
@@ -90,6 +97,10 @@ const ProjectInfo = styled.div`
     position: absolute;
     bottom: 15px;
     left: 20px;
+    .ant-tag {
+      margin-right: 5px;
+      margin-top: 4px;
+    }
     a {
       color: #9d9d9d;
     }
