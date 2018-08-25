@@ -24,13 +24,14 @@
       "projectName": "Keras(+Tensorflow) Korean Documentation",
       "description": "영어로 작성된 멋진 케라스 튜토리얼을 한글화하여 케라스가 널리&쉽게 사용되도록 기여합니다",
       "mentor": [{
-        "name": "김태영",
-        "profileUrl": "https://github.com/tykimos"
-      },
-      { "name": "전미정",
-        "profileUrl": "https://github.com/MijeongJeon"
-      }
-    ],
+          "name": "김태영",
+          "profileUrl": "https://github.com/tykimos"
+        },
+        {
+          "name": "전미정",
+          "profileUrl": "https://github.com/MijeongJeon"
+        }
+      ],
       "Repository": ["https://github.com/KerasKorea/KEKOxTutorial"]
     },
     {
@@ -75,7 +76,7 @@
       "mentor": [{
         "name": "이준범",
         "profileUrl": "https://github.com/junbeomlee"
-      },{
+      }, {
         "name": "안휘",
         "profileUrl": "https://github.com/byron1st"
       }],
@@ -98,19 +99,19 @@
       "mentor": [{
         "name": "최영락",
         "profileUrl": "https://github.com/ianychoi"
-      },{
+      }, {
         "name": "신호철",
         "profileUrl": ""
-      },{
+      }, {
         "name": "조성수",
         "profileUrl": "https://github.com/ppiyakk2"
-      },{
+      }, {
         "name": "장태희",
         "profileUrl": "https://github.com/janghe11"
-      },{
+      }, {
         "name": "공용준",
         "profileUrl": "https://github.com/sstrato"
-      },{
+      }, {
         "name": "강성진",
         "profileUrl": "https://github.com/ujuc"
       }],
@@ -149,10 +150,10 @@
     {
       "projectId": "uftrace",
       "projectName": "uftrace",
-    	"description": "uftrace 프로젝트 기여하기",
-    	"mentor": [{
-            "name": "송태웅",
-            "profileUrl": "https://github.com/taeung"
+      "description": "uftrace 프로젝트 기여하기",
+      "mentor": [{
+          "name": "송태웅",
+          "profileUrl": "https://github.com/taeung"
         },
         {
           "name": "박한범",
@@ -192,10 +193,10 @@
       "mentor": [{
         "name": "이유한",
         "profileUrl": "https://github.com/qkqkfldis1"
-      },{
+      }, {
         "name": "강천성",
         "profileUrl": "https://github.com/kcs93023"
-      },{
+      }, {
         "name": "김준태",
         "profileUrl": "https://github.com/OPAYA"
       }],
