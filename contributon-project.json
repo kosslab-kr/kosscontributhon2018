@@ -42,7 +42,7 @@
         "name": "",
         "profileUrl": ""
       }],
-      "Repository": ["https://github.com/cubrid-cms/drupal-cubrid", "https://github.com/cubrid-cms/joomla-cubrid"]
+      "Repository": ["https://github.com/cubrid-cms"]
     },
     {
       "projectId": "gitshare",
@@ -80,7 +80,7 @@
         "name": "안휘",
         "profileUrl": "https://github.com/byron1st"
       }],
-      "Repository": ["https://github.com/it-chain/engine"]
+      "Repository": ["https://github.com/it-chain"]
     },
     {
       "projectId": "netfilter",
