@@ -271,7 +271,9 @@ class App extends React.Component<IProps, IState> {
   }
 
   render() {
-    message.info('데이터를 동기화 하였습니다.', 2.5);
+    if (typeof document !== 'undefined') {
+      message.info('데이터를 동기화 하였습니다.', 2.5);
+    }
     const { projects, events } = this.props;
     const mergeProjects = [...contributonProjectJson.project];
     let totMaxCnt = 0;
