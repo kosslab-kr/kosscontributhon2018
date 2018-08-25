@@ -71,10 +71,13 @@
     {
       "projectId": "it_chain",
       "projectName": "it-chain",
-      "description": "it-chain 프로젝트 기여하기",
+      "description": "Lightweight & Customizable Private Block Chain",
       "mentor": [{
-        "name": "",
-        "profileUrl": ""
+        "name": "이준범",
+        "profileUrl": "https://github.com/junbeomlee"
+      },{
+        "name": "안휘",
+        "profileUrl": "https://github.com/byron1st"
       }],
       "Repository": ["https://github.com/it-chain/engine"]
     },
