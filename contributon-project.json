@@ -135,7 +135,7 @@
         "name": "",
         "profileUrl": ""
       }],
-      "Repository": []
+      "Repository": ["https://github.com/kosslab-kr/Tizen-CSharp-Projects"]
     },
     {
       "projectId": "tizen_nnapi",
@@ -145,7 +145,7 @@
         "name": "",
         "profileUrl": ""
       }],
-      "Repository": []
+      "Repository": ["https://github.com/kosslab-kr/Tizen-NN-Runtime"]
     },
     {
       "projectId": "uftrace",
