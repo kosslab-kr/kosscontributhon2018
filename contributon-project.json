@@ -120,10 +120,10 @@
     {
       "projectId": "presto_music",
       "projectName": "Presto Music",
-      "description": "Presto Music 프로젝트 기여하기",
+      "description": "웹 기술로 네이티브 뮤직 플레이어를 개발합니다.",
       "mentor": [{
-        "name": "",
-        "profileUrl": ""
+        "name": "소현섭",
+        "profileUrl": "https://github.com/iodes"
       }],
       "Repository": ["https://github.com/kosslab-kr/Presto.Contributhon"]
     },
