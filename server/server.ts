@@ -139,7 +139,7 @@ function addCron() {
 
     // backgroundJob
     crond.putJob('backgroundJob', null);
-    crond.addCron('backgroundJob', '0 */15 * * * *'); // per 15 minutes
+    crond.addCron('backgroundJob', '0 */10 * * * *'); // per 10 minutes
 
     // start
     crond.start();
