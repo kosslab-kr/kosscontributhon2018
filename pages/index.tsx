@@ -276,13 +276,24 @@ class App extends React.Component<IProps, IState> {
     const mergeProjects = [...contributonProjectJson.project];
     let totMaxCnt = 0;
 
+    mergeProjects.sort(function(a: TProject, b: TProject) {
+      const aRepoLen = a.Repository ? a.Repository.length : 0;
+      const bRepoLen = b.Repository ? b.Repository.length : 0;
+      if (aRepoLen < bRepoLen) {
+        return 1;
+      } else if (aRepoLen > bRepoLen) {
+        return -1;
+      } else {
+        return 0;
+      }
+    });
+
     for (let i = 0, l = mergeProjects.length; i < l; i++) {
       mergeProjects[i].activeCnt = 0;
-
       projects.forEach((p: TProject) => {
         if (mergeProjects[i].projectId === p.projectId) {
           mergeProjects[i] = { ...p };
-          mergeProjects[i].activeCnt = p.CommitCount || 0 + p.IssuesEvent || 0;
+          mergeProjects[i].activeCnt = (p.CommitCount || 0) + (p.IssuesEvent || 0);
           totMaxCnt = Math.max(p.CommitCount || 0, p.IssuesEvent || 0, totMaxCnt);
         }
       });
