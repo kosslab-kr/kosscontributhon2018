@@ -129,20 +129,20 @@
     },
     {
       "projectId": "tizen_xamarin",
-      "projectName": "Tizen C#/Xamarin",
-      "description": "Tizen C#/Xamarin Sample App 개발",
+      "projectName": "Tizen C#/Xamarin Sample App",
+      "description": "C#/Xamarin을 활용한 Tizen Sample App 개발",
       "mentor": [{
-        "name": "",
+        "name": "손기성",
         "profileUrl": ""
       }],
       "Repository": ["https://github.com/kosslab-kr/Tizen-CSharp-Projects"]
     },
     {
       "projectId": "tizen_nnapi",
-      "projectName": "Tizen NN API",
-      "description": "Tizen NN API & Runtime 프로젝트 기여하기",
+      "projectName": "Tizen NN API and Runtime",
+      "description": "Tizen Platform을 활용한 On-Device AI 제품 개발",
       "mentor": [{
-        "name": "",
+        "name": "손기성",
         "profileUrl": ""
       }],
       "Repository": ["https://github.com/kosslab-kr/Tizen-NN-Runtime"]
