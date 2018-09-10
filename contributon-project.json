@@ -132,7 +132,7 @@
       "projectName": "Tizen C#/Xamarin Sample App",
       "description": "C#/Xamarin을 활용한 Tizen Sample App 개발",
       "mentor": [{
-        "name": "",
+        "name": "손기성",
         "profileUrl": ""
       }],
       "Repository": ["https://github.com/kosslab-kr/Tizen-CSharp-Projects"]
