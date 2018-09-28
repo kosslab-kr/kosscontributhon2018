@@ -4,10 +4,10 @@
       "projectName": "ankus",
       "description": "ankus - Lite for web data analysis",
       "mentor": [{
-        "name": "",
-        "profileUrl": ""
+        "name": "장동훈",
+        "profileUrl": "https://github.com/onycom-ankus"
       }],
-      "Repository": []
+      "Repository": ["https://github.com/onycom-ankus/contributon2018"]
     },
     {
       "projectId": "chromium",
