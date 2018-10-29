@@ -101,7 +101,7 @@
         "profileUrl": "https://github.com/ianychoi"
       }, {
         "name": "신호철",
-        "profileUrl": ""
+        "profileUrl": "https://github.com/Shinhocheol"
       }, {
         "name": "조성수",
         "profileUrl": "https://github.com/ppiyakk2"
@@ -115,7 +115,7 @@
         "name": "강성진",
         "profileUrl": "https://github.com/ujuc"
       }],
-      "Repository": ["https://github.com/openstack-kr/contributhon-2018-team1", "https://github.com/openstack-kr/contributhon-2018-team2"]
+      "Repository": ["https://github.com/openstack-kr/contributhon-2018-team1", "https://github.com/openstack-kr/contributhon-2018-team2", "https://github.com/kosslab-kr/openstack-controller"]
     },
     {
       "projectId": "presto_music",
